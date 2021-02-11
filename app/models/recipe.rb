@@ -1,4 +1,4 @@
-class Api::V1::Recipe < ApplicationRecord
+class Recipe < ApplicationRecord
   belongs_to :plant
   belongs_to :user
 end

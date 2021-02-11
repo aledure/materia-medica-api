@@ -22,7 +22,7 @@ class Api::V1::RecipesController < ApplicationController
         if @recipe.update(recipe_params)
             render json: @recipe
         else
-            render json: @recipe.errors, status: ::unprocessable_entity
+            render json: @recipe.errors, status: :unprocessable_entity
         end
     end
 
@@ -32,8 +32,12 @@ class Api::V1::RecipesController < ApplicationController
 
     private
 
+    def set_recipe
+        @recipe = Recipe.find(params[:id])
+    end
+
     def recipe_params
-        params.require(:recipe).permit (:body, :plant_id, :user_id)
+        params.require(:recipe).permit(:body, :plant_id, :user_id)
     end
     
 end
