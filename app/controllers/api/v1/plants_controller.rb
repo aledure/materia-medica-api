@@ -1,4 +1,6 @@
 class Api::V1::PlantsController < ApplicationController
+    before_action :set_movie, only: [:show, :update, :destroy]
+    skip_before action :authenticate, only: [:index, :show]
 
     def index 
         @plants = Plant.all
